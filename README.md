@@ -34,6 +34,30 @@ field, getter, and/or setter. For example, in an OpenAPI Specification where you
 
 The `x-java-class-annotations` and the `x-java-field-annotations` would be integrated into the model for `Employee` so that it would be compatible with JPA.
 
+## Extra Considerations
+In many cases, a type definition which has another type embedded within it is as simple as:
+
+```yaml
+properties:
+  skill:
+    $ref: '#/components/schemas/Skill'
+```
+
+This approach **WILL NOT WORK** with this set of extensions. The reason is that OpenAPI delegates complete control to the referenced type and will not parse
+any additional vendor extensions. You can overcome this as follows:
+
+```yaml
+properties:
+  skill:
+    type: object
+    x-java-field-annotations:
+    - "@javax.persistence.ManyToOne(targetEntity = Skill.class)"
+    - "@javax.persistence.JoinColumn(name = \"skill_id\", insertable = false, updatable = false)"
+    allOf:
+      - $ref: '#/components/schemas/Skill'
+```
+
+By defining the `type` as `object` and using `allOf`, you achieve the same result, but OpenAPI will parse and use the vendor extensions
 
 ## Supported Extensions To OpenAPI
 
