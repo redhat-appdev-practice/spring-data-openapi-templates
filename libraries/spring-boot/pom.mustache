@@ -28,7 +28,24 @@
     </parent>
 {{/parentOverridden}}
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+                <execution>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>add-source</goal>
+                    </goals>
+                    <configuration>
+                        <sources>
+                            <source>{{#sourceFolder}}{{{.}}}{{/sourceFolder}}</source>
+                        </sources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         {{^interfaceOnly}}
         <plugins>
             <plugin>
