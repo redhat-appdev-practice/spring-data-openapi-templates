@@ -3,6 +3,9 @@
  */{{#description}}
 @ApiModel(description = "{{{description}}}"){{/description}}
 {{>generatedAnnotation}}{{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}{{>xmlAnnotation}}{{>additionalModelTypeAnnotations}}
+{{#vendorExtensions.x-java-class-annotations}}
+{{{.}}}
+{{/vendorExtensions.x-java-class-annotations}}
 public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}{{#hateoas}}extends RepresentationModel<{{classname}}> {{/hateoas}}{{/parent}} {{#serializableModel}}implements Serializable{{/serializableModel}} {
 {{#serializableModel}}
   private static final long serialVersionUID = 1L;
@@ -26,6 +29,9 @@ public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}
   {{#gson}}
   @SerializedName("{{baseName}}")
   {{/gson}}
+  {{#vendorExtensions.x-java-field-annotations}}
+  {{{.}}}
+  {{/vendorExtensions.x-java-field-annotations}}
   {{#isContainer}}
   {{#useBeanValidation}}@Valid{{/useBeanValidation}}
   {{#openApiNullable}}
@@ -109,6 +115,9 @@ public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}
   {{/maximum}}
    * @return {{name}}
   */
+  {{#vendorExtensions.x-java-getter-annotations}}
+  {{{.}}}
+  {{/vendorExtensions.x-java-getter-annotations}}
  {{#vendorExtensions.x-extra-annotation}}
   {{{vendorExtensions.x-extra-annotation}}}
   {{/vendorExtensions.x-extra-annotation}}
@@ -117,6 +126,9 @@ public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}
     return {{name}};
   }
 
+  {{#vendorExtensions.x-java-setter-annotations}}
+  {{{.}}}
+  {{/vendorExtensions.x-java-setter-annotations}}
   public void {{setter}}({{>nullableDataType}} {{name}}) {
     this.{{name}} = {{name}};
   }
