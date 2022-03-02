@@ -93,8 +93,8 @@ By defining the `type` as `object` and using `allOf`, you achieve the same resul
           allOf:
             - $ref: '#/components/schemas/Skill'
     ```
-  * `x-java-getter-annotations`: Can be used on any property of a Schema Type which is not just a reference to another type
-  * `x-java-setter-annotations`: Can be used on any property of a Schema Type which is not just a reference to another type
+  * `x-extra-annotation`: is built into the upstream and can be used on any property of a Schema Type which is not just a reference to another type
+  * `x-setter-extra-annotation`: is built into the upstream and can be used on any property of a Schema Type which is not just a reference to another type
 
 ## Usage
 

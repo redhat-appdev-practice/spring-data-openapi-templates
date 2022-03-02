@@ -135,9 +135,6 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}}{{^parent}}{{#ha
   {{/maximum}}
    * @return {{name}}
   */
-  {{#vendorExtensions.x-java-getter-annotations}}
-  {{{.}}}
-  {{/vendorExtensions.x-java-getter-annotations}}
   {{#vendorExtensions.x-extra-annotation}}
   {{{vendorExtensions.x-extra-annotation}}}
   {{/vendorExtensions.x-extra-annotation}}
@@ -154,9 +151,6 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}}{{^parent}}{{#ha
     return {{name}};
   }
 
-  {{#vendorExtensions.x-java-setter-annotations}}
-  {{{.}}}
-  {{/vendorExtensions.x-java-setter-annotations}}
   {{#vendorExtensions.x-setter-extra-annotation}}
   {{{vendorExtensions.x-setter-extra-annotation}}}
   {{/vendorExtensions.x-setter-extra-annotation}}
