@@ -1,3 +1,7 @@
+## THIS REPO IS DEPRECATED
+
+**The templates in this repo have been accepted upstream into OpenAPI Generator and this repo is no longer needed**
+
 # Overview
 
 This repository contains a set of mustache templates which are meant to work with [OpenAPI Generator](https://openapi-generator.tech/). These
